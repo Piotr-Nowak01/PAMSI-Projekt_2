@@ -51,7 +51,7 @@ class doublehasz
 				}
 				i++;
 			}
-			return (i+1);
+			return (i+1);		//zwraca, po ilu próbkach znaleziono liczbê
 		}
 		int dodaj(int x)
 		{
@@ -80,6 +80,23 @@ class doublehasz
 				tab[indeks1]=x;
 				obc_roz++;
 				return 1;
+			}
+		}
+		void usun(int x)
+		{
+			int z=szukaj(x);
+			if (z!=-1)
+			{
+				int indeks1=hasz1(x);
+				int indeks2=hasz2(x);
+				tab[indeks1+z*indeks2]=-1;
+				cout<<"Usuniêto."<<endl;
+				return;
+			}
+			else
+			{
+				cout<<"Nie ma takiego elementu."<<endl;
+				return;
 			}
 		}
 };

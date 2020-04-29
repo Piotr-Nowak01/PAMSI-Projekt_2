@@ -75,6 +75,23 @@ class probkowanie
 				return 1;
 			}
 		}
+		void usun (int x)
+		{
+			int z=szukaj(x);
+			if(z!=-1)
+			{
+				int indeks=hasz(x);
+				int w=(indeks+z)%rozmiar;
+				tab[w]=-1;
+				cout<<"Usuniêto."<<endl;
+				return;
+			}
+			else
+			{
+				cout<<"Nie znaleziono."<<endl;
+				return;
+			}
+		}
 };
 bool czy_1 (int n)
 {
