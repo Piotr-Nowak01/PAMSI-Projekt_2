@@ -38,27 +38,26 @@ class doublehasz
 				}
 			}
 		}
-		void szukaj(int x)
+		int szukaj(int x)
 		{
 			int indeks1=hasz1(x);
 			int indeks2=hasz2(x);
 			int i=0;
 			while (tab[indeks1+i*indeks2])
 			{
-				if (tab[indeks1+i*indeks2])
+				if (tab[indeks1+i*indeks2]==-1)
 				{
-					cout<<x<<" nie istnieje";
-					return;
+					return -1;
 				}
 				i++;
 			}
-			cout<<x<<" istnieje";
+			return (i+1);
 		}
-		void dodaj(int x)
+		int dodaj(int x)
 		{
 			if (czy_p())
 			{
-				return;
+				return 0;
 			}
 			int indeks1=hasz1(x);
 			if(tab[indeks1]!=-1)
@@ -71,7 +70,7 @@ class doublehasz
 					if(tab[indeks]==-1)
 					{
 						tab[indeks]=x;
-						break;
+						return i;
 					}
 					i++;
 				}
@@ -80,6 +79,7 @@ class doublehasz
 			{
 				tab[indeks1]=x;
 				obc_roz++;
+				return 1;
 			}
 		}
 };
@@ -97,7 +97,7 @@ bool czy_1 (int n)
 }
 int main()
 {
-	int N,q;
+	int N,q,z;
 	cout<<"Podaj rozmiar tablicy"<<endl;
 	cin>>N;
 	while(!czy_1(N))
@@ -116,8 +116,11 @@ int main()
 	for (int i=0;i<N;i++)
 	{
 		int x=rand()%ogranicz+manip;
-		hasz.dodaj(x);
+		cout<<"Element: "<<x<<" ilosc probek: ";
+		cout<<hasz.dodaj(x)<<endl;
+		z=x;
 	}
+	cout<<"Element "<<z<<" znaleziono po "<<hasz.szukaj(z)<<" próbkach"<<endl;
 	hasz.wyswietl();
 }
 
